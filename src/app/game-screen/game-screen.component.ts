@@ -18,6 +18,7 @@ import { NotifierService } from 'angular-notifier';
 export class GameScreenComponent {
   location = location;
   Math = Math;
+  placebetLoading = false;
   roomId: string = '';
   userAddress: string = '';
   UserBalance: number = 0;
@@ -38,6 +39,7 @@ export class GameScreenComponent {
   async placeBet() {
     try {
       if (this.game.player?.bet > 0) {
+        this.placebetLoading = true
         // const estimateGas = await this.Wbe3.web3.eth.estimateGas({ from: this.Wbe3.account, to: "0xEDA8A2E1dfA5B93692D2a9dDF833B6D7DF6D5f93", amount: this.Wbe3.web3.utils.toWei(`${this.game.player.bet}`, "ether") })
         const ts = await this.Wbe3.contract._methods.placeBet(this.Wbe3.web3.utils.toWei(`${this.game.player.bet}`, "ether")).send({
           from: this.Wbe3.account,
@@ -45,10 +47,12 @@ export class GameScreenComponent {
         })
         console.log("ts ts ,", ts)
         this.game.setReadyState(true)
+        this.placebetLoading = false
         return
       }
       this.notifierService.notify('error', 'cannot ploace bet on 0 matic! ')
     } catch (error) {
+      this.placebetLoading = false
       console.log(error);
 
     }

@@ -19,8 +19,8 @@
   </div>
 
   <div class="pill-menu" *ngIf="!readyMenuHidden">
-    <button style="flex-grow: 100" (click)="readyChange.emit(!ready)">
-      {{ ready ? "Not ready" : "Ready" }}
+    <button [disabled]="placebetLoading" style="flex-grow: 100" (click)="readyChange.emit(!ready)">
+      <span class="loadermini" *ngIf="placebetLoading"></span> {{ ready ? "Not ready" : "Ready" }}
     </button>
     <!-- <div class="h-9">
       <mat-checkbox

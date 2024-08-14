@@ -11,7 +11,7 @@ export class PlayerActionsComponent {
   @Input() currentBet = 0;
   @Output() changeBet = new EventEmitter<number>();
   @Output() setBet = new EventEmitter<number>();
-
+  @Input() placebetLoading = false;
   /** If true stayHitMenu is shown instead of ready menu */
   @Input() readyMenuHidden = false;
   @Input() ready? = false;
