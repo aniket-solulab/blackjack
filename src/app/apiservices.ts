@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 
 // Create Axios instance with base URL
 const api: AxiosInstance = axios.create({
-    baseURL: 'https://2p886xzx-5000.inc1.devtunnels.ms/api/v1/',
+    baseURL: 'https://casino-trustbet-dick.onrender.com/api/v1/',
     timeout: 10000, // 10 seconds timeout
     headers: {
         'Content-Type': 'application/json',
