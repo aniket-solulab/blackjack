@@ -50,7 +50,7 @@ export class GameScreenComponent {
         this.placebetLoading = false
         return
       }
-      this.notifierService.notify('error', 'cannot ploace bet on 0 matic! ')
+      this.notifierService.notify('error', 'cannot place bet on 0 ETH! ')
     } catch (error) {
       this.placebetLoading = false
       console.log(error);

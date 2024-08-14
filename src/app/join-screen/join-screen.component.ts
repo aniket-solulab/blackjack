@@ -105,7 +105,7 @@ export class JoinScreenComponent {
       console.log(user)
       // @ts-ignore
       if (iswithdraw < 0.1) {
-        return this.notifierService.notify('error', 'Your balance is less than 0.1 Matic. Please add funds to continue.');
+        return this.notifierService.notify('error', 'Your balance is less than 0.1 ETH. Please add funds to continue.');
       }
       // @ts-ignore
       this.game.UserProfile = user?.data?.items

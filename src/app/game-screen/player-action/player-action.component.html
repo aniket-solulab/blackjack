@@ -14,7 +14,7 @@
     <button (click)="setBet.emit(+betInput.value)" data-cy="setBet-btn">
       Set Bet:
     </button>
-    <input class="w-24" #betInput type="number" [min]="gameConfig.minBet" [max]="gameConfig.maxBet" value="100"
+    <input class="w-24" #betInput type="number" [min]="gameConfig.minBet" [max]="gameConfig.maxBet" value="0.001"
       appInputConstrain data-cy="bet-input" />
   </div>
 

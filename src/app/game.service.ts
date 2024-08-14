@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { apiService } from './apiservices';
 import { io, Socket } from 'socket.io-client';
 import { Web3Service } from './web3.service';
+import { NotifierService } from 'angular-notifier';
 
 
 @Injectable({
@@ -52,7 +53,7 @@ export class GameService {
     );
   }
 
-  constructor(private router: Router,) {
+  constructor(private router: Router, public notifictaion: NotifierService) {
     this.client = new Colyseus.Client(environment.gameServer);
     this.socket = io(environment.gameServer);
     this.setupSocketListeners()
@@ -139,8 +140,7 @@ export class GameService {
 
   public changeBet(change: number) {
     if (!this.player) return;
-    console.log(this.player?.bet, change);
-    this.socket?.emit("message", { "messageType": "bet", "data": this.player?.bet + change, "roomId": this.roomId })
+    this.socket?.emit("message", { "messageType": "bet", "data": change, "roomId": this.roomId })
   }
 
   public setBet(newBet: number) {
@@ -272,7 +272,11 @@ export class GameService {
       this.joinRoom(gameState?.roomId);
       // Update your game state here
     });
-
+    this.socket.on("error", (error) => {
+      if (error.message) {
+        this.notifictaion.notify('error', error.message)
+      }
+    })
     this.socket.on('updatedGameState', (updateState) => {
 
       this.roomJoined = true
