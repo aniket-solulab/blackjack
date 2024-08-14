@@ -132,6 +132,7 @@ export class GameService {
 
   public leaveRoom() {
     this.socket?.emit('message', { "messageType": "leaveRoom", "roomId": this.roomId });
+    this.socket?.disconnect()
     this.router.navigate(["/"])
     sessionStorage.clear()
   }

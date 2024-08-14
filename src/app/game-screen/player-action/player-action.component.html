@@ -6,10 +6,10 @@
     </span>
 
     <span class="whitespace-normal"> Change Bet: </span>
-    <button (click)="changeBet.emit(-0.005)">-0.05</button>
-    <button (click)="changeBet.emit(-0.001)">- 0.01</button>
-    <button (click)="changeBet.emit(0.001)">+ 0.01</button>
-    <button (click)="changeBet.emit(0.005)">+ 0.05</button>
+    <button (click)="changeBet.emit(-0.005)">-0.005</button>
+    <button (click)="changeBet.emit(-0.001)">- 0.001</button>
+    <button (click)="changeBet.emit(0.001)">+ 0.001</button>
+    <button (click)="changeBet.emit(0.005)">+ 0.005</button>
 
     <button (click)="setBet.emit(+betInput.value)" data-cy="setBet-btn">
       Set Bet:
