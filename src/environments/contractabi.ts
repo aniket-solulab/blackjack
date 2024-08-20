@@ -99,7 +99,7 @@ export const contractabi = [
                 "type": "uint256"
             }
         ],
-        "name": "InvalidWinnerCount",
+        "name": "InvalidPlayerCount",
         "type": "error"
     },
     {
@@ -127,6 +127,22 @@ export const contractabi = [
             }
         ],
         "name": "OwnableUnauthorizedAccount",
+        "type": "error"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "playerLength",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amountLength",
+                "type": "uint256"
+            }
+        ],
+        "name": "PlayerAndAmountarrayLengthMismatch",
         "type": "error"
     },
     {
@@ -227,20 +243,7 @@ export const contractabi = [
             {
                 "indexed": true,
                 "internalType": "address",
-                "name": "implementation",
-                "type": "address"
-            }
-        ],
-        "name": "Upgraded",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "winner",
+                "name": "player",
                 "type": "address"
             },
             {
@@ -250,7 +253,20 @@ export const contractabi = [
                 "type": "uint256"
             }
         ],
-        "name": "WinnerReward",
+        "name": "PlayerReward",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "implementation",
+                "type": "address"
+            }
+        ],
+        "name": "Upgraded",
         "type": "event"
     },
     {
@@ -299,6 +315,19 @@ export const contractabi = [
                 "internalType": "string",
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "adminFund",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -424,13 +453,13 @@ export const contractabi = [
         "inputs": [
             {
                 "internalType": "address[]",
-                "name": "winners",
+                "name": "playerArray",
                 "type": "address[]"
             },
             {
-                "internalType": "address[]",
-                "name": "playerArray",
-                "type": "address[]"
+                "internalType": "uint256[]",
+                "name": "amount",
+                "type": "uint256[]"
             }
         ],
         "name": "setWinner",

@@ -30,7 +30,7 @@ export class Web3Service {
                     this.web3 = new Web3(window.ethereum);
                     this.account = accounts[0];
 
-                    this.contract = new this.web3.eth.Contract(contractabi, '0xA7D9D6c5424e401ec02e3f724AC7C5a9942bdbcA');
+                    this.contract = new this.web3.eth.Contract(contractabi, '0x0eCddAE3422541488A90859a94338A4C2120D463');
                     this.isWalletConnected = true;
                     this.balance = await this.getBalance()
                 } else {
@@ -45,7 +45,7 @@ export class Web3Service {
         try {
             const iswithdraw = await this.contract._methods.getDepositedAmount(this.account).call()
             if (parseFloat(this.web3.utils.fromWei(iswithdraw, 'ether')) > 0) {
-                this.withdrawBalance = parseFloat(parseFloat(this.web3.utils.fromWei(iswithdraw, 'ether'))?.toFixed(3))
+                // this.withdrawBalance = parseFloat(parseFloat(this.web3.utils.fromWei(iswithdraw, 'ether'))?.toFixed(3))
                 return parseFloat(this.web3.utils.fromWei(iswithdraw, 'ether'))
             }
             return 0
@@ -83,7 +83,7 @@ export class Web3Service {
                 this.account = accounts[0];
                 // @ts-ignore
                 this.web3 = new Web3(window.ethereum);
-                this.contract = new this.web3.eth.Contract(contractabi, '0xFdCEd3cA71C804F831450a1e275d041D66Db8525');
+                this.contract = new this.web3.eth.Contract(contractabi, '0x0eCddAE3422541488A90859a94338A4C2120D463');
                 this.isWalletConnected = true;
                 this.balance = await this.getBalance()
                 this.getUserWithDrawBalance()

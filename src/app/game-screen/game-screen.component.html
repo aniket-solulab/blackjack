@@ -19,6 +19,7 @@
       <mat-icon>star</mat-icon>
     </button>
   </div>
+  <p *ngIf="timerInterval" class="timer useraddressinof">Time Remaining: {{ getRemainingTime() }}</p>
 
   <div class="grid place-items-center py-8 w-min">
     <div class="player-holder row-start-1 col-start-1">
