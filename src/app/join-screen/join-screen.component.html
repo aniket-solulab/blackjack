@@ -15,12 +15,12 @@
         data-cy="connect-wallet-btn">
         <span class="loadermini" *ngIf="depositloading"></span> Deposit Balance
       </button>
-      <button mat-raised-button color="primary" (click)="CreateRoom()" [disabled]="game.joinInProgress"
+      <!-- <button mat-raised-button color="primary" (click)="CreateRoom()" [disabled]="game.joinInProgress"
         data-cy="create-btn">
         Create room
-      </button>
-
-      <span class="strike-block"> or </span>
+      </button> -->
+      <app-jointable (createRoom)="CreateRoom()" [btndisabled]="game.joinInProgress"></app-jointable>
+      <!-- <span class="strike-block"> or </span>
 
       <mat-form-field class="-mb-4" [hideRequiredMarker]="true">
         <mat-label>Room ID</mat-label>
@@ -33,7 +33,7 @@
           data-cy="join-btn">
           Join room
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
   <button mat-raised-button color="primary" (click)="connectMetamask()" *ngIf="!walletConnected"

@@ -269,12 +269,12 @@ export class GameService {
 
     this.socket.on('roomCreated', (gameState) => {
       console.log("room created", gameState);
-      this.joinRoom(gameState?.roomId);
+      // this.joinRoom(gameState?.roomId);
       // Update your game state here
     });
     this.socket.on("error", (error) => {
-      if (error.message) {
-        this.notifictaion.notify('error', error.message)
+      if (error?.error?.message) {
+        this.notifictaion.notify('error', error?.error?.message)
       }
     })
     this.socket.on('updatedGameState', (updateState) => {
