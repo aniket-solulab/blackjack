@@ -39,8 +39,11 @@
                     </svg>
                     <span class="sr-only">Loading...</span>
                 </div>
-                <div class="row">
-                    <div *ngFor="let item of tablesLists.items; index as i; " (click)="game.joinRoom(item.roomId)"
+                <div *ngIf="!loading && tablesLists?.items?.length == 0" class="w-full">
+                    <p class="text-center">No Table found</p>
+                </div>
+                <div class="row" *ngIf="!loading && tablesLists?.items?.length">
+                    <div *ngFor="let item of tablesLists?.items; index as i; " (click)="game.joinRoom(item.roomId)"
                         class="col-md-4 cursor-pointer">
                         <h2 class="mb-0">{{item.roomId}}</h2>
                         <h4>Players: {{item.activePlayersCount}}</h4>
