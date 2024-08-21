@@ -26,6 +26,7 @@ import { NotifierModule } from 'angular-notifier';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HandScoreComponent } from './game-screen/player/hand-score/hand-score.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { JointableComponent } from './jointable/jointable.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     KickDialogComponent,
     InputConstrainDirective,
     HandScoreComponent,
+    JointableComponent,
   ],
   imports: [
     BrowserModule,
