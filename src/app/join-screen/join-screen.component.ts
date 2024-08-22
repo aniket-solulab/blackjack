@@ -32,14 +32,20 @@ export class JoinScreenComponent {
     this.walletConnected = await this.web3Service.connectWallet();
     this.web3Service.createUserSignup(this.web3Service.account)
   }
-  async depositBalance() {
+  async depositBalance(value: string) {
+    if (isNaN(parseInt(value))) {
+      return
+    }
+    if (parseFloat(value) < 0.1) {
+      return this.notifierService.notify('error', 'Minimum deposit amount is 0.1 ETH');
+    }
     try {
       this.depositloading = true
       console.log(this.web3Service.contract)
-      const reshash = await this.web3Service.contract._methods.deposit(this.web3Service.web3.utils.toWei('0.1', 'ether')).send({
+      const reshash = await this.web3Service.contract._methods.deposit(this.web3Service.web3.utils.toWei(`${parseFloat(value)}`, 'ether')).send({
         from: this.web3Service.account,
         gas: 1000000,
-        value: this.web3Service.web3.utils.toWei('0.1', 'ether'),
+        value: this.web3Service.web3.utils.toWei(`${parseFloat(value)}`, 'ether'),
       });
       this.depositloading = false
       console.log(reshash)

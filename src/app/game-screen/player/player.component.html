@@ -7,7 +7,7 @@
 
   <div class="flex flex-col col-start-1 row-start-1">
     <span class="table-font text-center whitespace-nowrap" [attr.data-cy]="player ? 'player-name' : null">
-      {{ type == "dealer" ? "Dealer" : player?.displayName || "No Player" }}
+      {{ type == "dealer" ? "Dealer" : playername || "No Player" }}
     </span>
 
     <app-money-counter *ngIf="player" [money]="player.money"></app-money-counter>

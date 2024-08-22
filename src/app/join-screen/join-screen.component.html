@@ -11,10 +11,11 @@
         data-cy="connect-wallet-btn">
         <span class="loadermini" *ngIf="withdarwLoading"></span> Withdraw Balance
       </button>
-      <button [disabled]="depositloading" mat-raised-button color="primary" (click)="depositBalance()"
+      <!-- <button [disabled]="depositloading" mat-raised-button color="primary" (click)="depositBalance()"
         data-cy="connect-wallet-btn">
         <span class="loadermini" *ngIf="depositloading"></span> Deposit Balance
-      </button>
+      </button> -->
+      <app-deposit [depositLoaing]="depositloading" (depositBalance)="depositBalance($event)"></app-deposit>
       <!-- <button mat-raised-button color="primary" (click)="CreateRoom()" [disabled]="game.joinInProgress"
         data-cy="create-btn">
         Create room

@@ -1,0 +1,50 @@
+<!-- Modal toggle -->
+<button (click)="openModal()" mat-raised-button color="primary" class="w-full" type="button">
+    Deposit Balance
+</button>
+
+<!-- Main modal -->
+<div *ngIf="showModal" class="backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full
+    md:inset-0 h-[calc(100%-1rem)] flex max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative rounded-lg shadow bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600">
+                <h3 class="text-xl font-semibold  text-white">
+                    Deposit ETH ({{ethvalue}})
+                </h3>
+                <button *ngIf="!depositLoaing" type="button"
+                    class="text-gray-400 bg-transparent   rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center hover:bg-gray-600 hover:text-white"
+                    (click)="showModal =!showModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4 ">
+                <form class="max-w-sm mx-auto">
+                    <label for="number-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter
+                        ETH:</label>
+                    <input [disabled]="depositLoaing" [(ngModel)]="ethvalue" name="ethvalue" type="number"
+                        id="number-input" aria-describedby="helper-text-explanation" min="0.1" step="0.1"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="90210" required #ethInput (keydown)="onKeyDown($event, ethInput)">
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center p-4 md:p-5 border-t  rounded-b border-gray-600">
+                <button (click)="depositBalance.emit(ethvalue)" [disabled]="depositLoaing"
+                    data-modal-hide="default-modal" type="button"
+                    class="text-white flex justify-center items-center gap-2  focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                    <span class="loadermini" *ngIf="depositLoaing"></span> Deposit</button>
+                <button (click)="closeModal()" [disabled]="depositLoaing" type="button"
+                    class="py-2.5 mx-4 px-5 ms-3 text-sm font-medium  focus:outline-none  rounded-lg border text-white   focus:z-10 focus:ring-4  focus:ring-gray-700 bg-gray-800  border-gray-600  hover:bg-gray-700">Decline</button>
+            </div>
+        </div>
+    </div>
+</div>
