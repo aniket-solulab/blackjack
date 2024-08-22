@@ -4,7 +4,7 @@
 </button>
 
 <!-- Main modal -->
-<div *ngIf="showModal" class="backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full
+<div *ngIf="showModal && !depositSuccess" class="backdrop-blur-md overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full
     md:inset-0 h-[calc(100%-1rem)] flex max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->

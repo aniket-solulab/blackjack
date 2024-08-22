@@ -15,12 +15,14 @@
         data-cy="connect-wallet-btn">
         <span class="loadermini" *ngIf="depositloading"></span> Deposit Balance
       </button> -->
-      <app-deposit [depositLoaing]="depositloading" (depositBalance)="depositBalance($event)"></app-deposit>
+      <app-deposit [depositSuccess]="depositSuccess" (setDepositSuccess)="setDepositSuccess($event)"
+        [depositLoaing]="depositloading" (depositBalance)="depositBalance($event)"></app-deposit>
       <!-- <button mat-raised-button color="primary" (click)="CreateRoom()" [disabled]="game.joinInProgress"
         data-cy="create-btn">
         Create room
       </button> -->
       <app-jointable (createRoom)="CreateRoom()" [btndisabled]="game.joinInProgress"></app-jointable>
+      <app-transcations></app-transcations>
       <!-- <span class="strike-block"> or </span>
 
       <mat-form-field class="-mb-4" [hideRequiredMarker]="true">

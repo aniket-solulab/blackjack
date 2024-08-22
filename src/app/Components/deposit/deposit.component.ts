@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-deposit',
@@ -10,13 +9,17 @@ export class DepositComponent {
   showModal = false;
   ethvalue: number = 0.1
   loading: boolean = false
+  @Input() depositSuccess: boolean = false
   @Input() depositLoaing: boolean = false
   @Output() depositBalance: any = new EventEmitter<boolean>();
+  @Output() setDepositSuccess: any = new EventEmitter<boolean>();
   closeModal() {
     this.ethvalue = 0.1;
     this.showModal = false;
   }
   async openModal() {
+    this.setDepositSuccess.emit(false)
+    this.ethvalue = 0.1;
     this.showModal = true;
   }
   ngOnDestroy() {

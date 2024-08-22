@@ -17,6 +17,7 @@ export class JoinScreenComponent {
   withdarwLoading: boolean = false;
   walletConnected = false;
   withdrawBalance = 0
+  public depositSuccess = false
   public depositloading = false;
   roomId = new FormControl('', [
     Validators.required,
@@ -32,11 +33,14 @@ export class JoinScreenComponent {
     this.walletConnected = await this.web3Service.connectWallet();
     this.web3Service.createUserSignup(this.web3Service.account)
   }
+  setDepositSuccess(val: boolean) {
+    this.depositSuccess = val
+  }
   async depositBalance(value: string) {
     if (isNaN(parseInt(value))) {
       return
     }
-    if (parseFloat(value) < 0.1) {
+    if (parseFloat(value) < 0) {
       return this.notifierService.notify('error', 'Minimum deposit amount is 0.1 ETH');
     }
     try {
@@ -48,6 +52,7 @@ export class JoinScreenComponent {
         value: this.web3Service.web3.utils.toWei(`${parseFloat(value)}`, 'ether'),
       });
       this.depositloading = false
+      this.setDepositSuccess(true)
       console.log(reshash)
     } catch (error) {
       this.depositloading = false

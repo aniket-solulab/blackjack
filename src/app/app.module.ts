@@ -28,6 +28,7 @@ import { HandScoreComponent } from './game-screen/player/hand-score/hand-score.c
 import { LayoutModule } from '@angular/cdk/layout';
 import { JointableComponent } from './jointable/jointable.component';
 import { DepositComponent } from './Components/deposit/deposit.component';
+import { TranscationsComponent } from './Components/transcations/transcations.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DepositComponent } from './Components/deposit/deposit.component';
     HandScoreComponent,
     JointableComponent,
     DepositComponent,
+    TranscationsComponent,
   ],
   imports: [
     BrowserModule,
