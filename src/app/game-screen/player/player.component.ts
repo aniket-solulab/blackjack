@@ -24,7 +24,9 @@ export class PlayerComponent {
   get hand() {
     return this.player?.hand || this.dealerHand;
   }
-
+  get playername() {
+    return this.concatName(this.player?.walletAddress! || this.player?.displayName!)
+  }
   public roundOutcomeToDisplayMessage = {
     bust: 'Busted',
     win: 'Win',
@@ -40,4 +42,13 @@ export class PlayerComponent {
     draw: 'Draw',
     '': '',
   };
+  concatName(name: string) {
+    if (name) {
+      if (name.length <= 5) {
+        return name
+      }
+      return name.slice(0, 5) + '...' + name.slice(-4)
+    }
+    return ''
+  }
 }

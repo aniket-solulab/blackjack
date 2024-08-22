@@ -21,12 +21,13 @@ import { InputConstrainDirective } from './game-screen/player-action/input-const
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HandScoreComponent } from './game-screen/player/hand-score/hand-score.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { JointableComponent } from './jointable/jointable.component';
+import { DepositComponent } from './Components/deposit/deposit.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { JointableComponent } from './jointable/jointable.component';
     InputConstrainDirective,
     HandScoreComponent,
     JointableComponent,
+    DepositComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,9 @@ import { JointableComponent } from './jointable/jointable.component';
     MatInputModule,
     MatProgressBarModule,
     MatDialogModule,
+    FormsModule,
     MatIconModule,
+    // NgModule,
     MatTooltipModule,
     ClipboardModule,
     ReactiveFormsModule,
@@ -70,4 +74,4 @@ import { JointableComponent } from './jointable/jointable.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

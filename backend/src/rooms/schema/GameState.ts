@@ -91,6 +91,7 @@ export class Hand extends Schema {
 
 export class Player extends Schema {
   @type('string') sessionId: string;
+  @type('string') walletAddress: string;
   @type('string') displayName: string;
   @type('number') money: number = gameConfig.initialPlayerMoney;
   @type('number') bet: number = gameConfig.initialPlayerBet;
